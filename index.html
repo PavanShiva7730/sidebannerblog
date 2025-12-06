@@ -1,0 +1,66 @@
+<div style="max-width:340px;margin:34px auto;padding:20px 12px 18px 12px;background:#f6ffed;border-radius:14px;box-shadow:0 4px 16px #22e46a13;font-family:system-ui,sans-serif;">
+
+  <!-- LOGO ADDED HERE -->
+  <div style="text-align:center;margin-bottom:10px;">
+    <img src="https://cdn.testbook.com/1764397630635-Supar_Pass_LIVE-3__4_-removebg-preview.png/1764397632.png" 
+         alt="SuperPass Live" 
+         style="height:36px;display:inline-block;">
+  </div>
+
+  <!-- TITLE -->
+  <div style="font-size:18px;font-weight:800;color:#1ea84a;margin-bottom:8px;text-align:center;">
+    👑 Just Unlocked the ₹1 SuperPass!
+  </div>
+
+  <!-- LEADERBOARD LIST -->
+  <div id="lbBoard" style="margin-top:6px;">
+    <!-- List items injected here -->
+  </div>
+
+  <!-- CTA BUTTON -->
+  <a href="https://testbk.co/1hwqd" target="_blank"
+     style="display:block;margin:16px auto 0 auto;background:#1ea84a;color:#fff;padding:12px 0;border-radius:8px;
+            font-size:16px;font-weight:800;text-align:center;text-decoration:none;box-shadow:0 2px 8px #1ea84a44;width:92%;">
+Get Your ₹1 SuperPass Now!
+  </a>
+</div>
+
+<script>
+  const users = [
+    {name:"Amit Yadav", city:"Lucknow"},
+    {name:"Priya Sharma", city:"Delhi"},
+    {name:"Ravi Kumar", city:"Patna"},
+    {name:"Anjali Mehta", city:"Jaipur"},
+    {name:"Sanjay Verma", city:"Indore"},
+    {name:"Nisha Gupta", city:"Kolkata"},
+    {name:"Alok Sinha", city:"Kanpur"},
+    {name:"Ritu Singh", city:"Bhopal"},
+    {name:"Sunil Joshi", city:"Agra"},
+    {name:"Manju Chauhan", city:"Varanasi"}
+  ];
+
+  const lbBoard = document.getElementById("lbBoard");
+  let idx = 0;
+
+  function showLeaderboard() {
+    let html = '';
+    for (let i = 0; i < 5; i++) {
+      let u = users[(idx + i) % users.length];
+      html += `
+        <div style="display:flex;align-items:center;gap:10px;background:#fff;border-radius:9px;
+                    padding:8px 13px;margin-bottom:7px;box-shadow:0 2px 9px #1ea84a08;">
+          <span style="background:#1ea84a22;color:#1ea84a;font-size:17px;font-weight:900;border-radius:50%;
+                        width:30px;height:30px;display:flex;align-items:center;justify-content:center;">★</span>
+          <span style="font-size:15px;font-weight:700;color:#333;">${u.name}</span>
+          <span style="font-size:13px;color:#666;margin-left:auto;">${u.city}</span>
+          <span style="background:#fa5252;color:#fff;font-size:12px;font-weight:800;padding:3px 7px;
+                        border-radius:6px;margin-left:10px;">₹1 Pass</span>
+        </div>`;
+    }
+    lbBoard.innerHTML = html;
+    idx = (idx + 1) % users.length;
+  }
+
+  showLeaderboard();
+  setInterval(showLeaderboard, 2200);
+</script>
